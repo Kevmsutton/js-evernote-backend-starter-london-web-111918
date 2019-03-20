@@ -12,18 +12,21 @@ class Api::V1::NotesController < ApplicationController
   end
 
   def update
-    @note.update(note_params)
-    render json: @note, status: 200
+    note.update(note_params)
+    if note.save
+      render json: note, status: :accepted
+    else
+      render json: { errors: note.errors.full_messages }, status: :unprocessible_entity
+    end
   end
 
   def destroy
-    noteId = @note.id
     @note.destroy
-    render json: {message:"Zap! Note deleted", noteId:noteId}
+    render json: @note
   end
 
   def show
-    render json: @note, status: 200
+    render json: note, status: 200
   end
 
   private

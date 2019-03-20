@@ -2,12 +2,24 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title>Evernote Clone</title>
-    <script src="src/index.js" charset="utf-8"></script>
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-
-    <!-- ADD YOUR HTML HERE -->
-
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <img id="birdie"src="birdie.jpg"></img>
+</nav>
+    <div class='container'>
+      <h2 id='header'></h2>
+      <form id='add-note-form'>
+        <input required id='title-input' name='new-note-title' type='text' value="" placeholder="Note Title"/>
+        <textarea name="styled-textarea"  id="noteInput" onfocus="this.value=''; setbg('#E0FFFF');" onblur="setbg('white')" value="" required >Enter a new note...</textarea>
+        <input type='submit' class="btn btn-primary btn-lg btn-block" value='add a new note'/>
+      </form><br>
+      <ul id='all-notes'>
+      </ul>
+    </div>
+    <script type="text/javascript" src='src/index.js'></script>
   </body>
 </html>

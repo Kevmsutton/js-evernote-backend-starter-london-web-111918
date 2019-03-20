@@ -1,0 +1,53 @@
+const newNoteForm = document.querySelector('#add-note-form')
+const note_listEl = document.querySelector('#all-notes')
+const titleInput = document.querySelector('#title-input')
+const noteInput = document.querySelector('#noteInput')
+// const titleEl = document.createElement('h2')
+// const bodyEl = document.createElement('p')
+// const noteBody = bodyEl.innerHTML
+
+
+const state = {
+  notes: []
+}
+
+newNoteForm.addEventListener('submit', event => {
+  event.preventDefault()
+  const note = {
+    id: state.notes.length+1,
+    title: titleInput.value,
+    body: noteInput.value
+  }
+  state.notes.push(note)
+
+  newNoteForm.reset()
+
+
+function renderNewNote(){
+  const titleEl = document.createElement('li')
+  const bodyEl = document.createElement('p')
+      state.notes.forEach(note => {
+        titleEl.innerHTML = `${state.notes.length}. ${note.title}`
+        bodyEl.innerHTML = `Note: ${note.body} <button id="delete-note">Delete Note</button>`
+      })
+
+      note_listEl.append(titleEl, bodyEl)
+
+  }
+
+
+
+  function deleteNote(){
+    const delete_button = document.querySelector('#delete-note')
+    delete_button.addEventListener('click', event => {
+      state.notes.find(note => console.log(note.id))
+  })
+}
+
+
+
+renderNewNote()
+deleteNote()
+getNotes()
+
+})
